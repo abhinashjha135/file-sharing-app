@@ -23,8 +23,9 @@
 
    router.post('/', (req, res) => {
       // validate request
-       
+        console.log("ljfdljlkfd")
       upload(req,res, async (err)=>{
+         console.log("req.file",req.file)
          if (!req.file) {
             return res.json({ error: "all fileds are required" });
       
@@ -39,9 +40,7 @@
             size:req.file.size
          });
          const response=await file.save();
-         console.log(process.env.APP_BASE_URL);
-         console.log("files");
-         console.log(response.uuid)
+        
          return res.json({file:`${process.env.APP_BASE_URL}/files/${response.uuid}`})
          
 
